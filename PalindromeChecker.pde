@@ -4,7 +4,7 @@ public void setup()
   println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
-    if(palindrome(lines[i])==true)
+    if(palindrome(reverse(lines[i]))==true)
     {
       println(lines[i] + " IS a palindrome.");
     }
@@ -31,12 +31,15 @@ public String reverse(String str)
     if (length == 0){
       return "";
     }
-    for (int i = 0; i<length; i++){
-      sNew = sNew + str.substring(length-i-1, length -i);
+    for (int i = length; i>0; i--){
+      if (Character.isLetter(str.charAt(i-1)) == true){
+        sNew = sNew + str.substring(i-1, i);
+      } else{
+        sNew = sNew+ "";
+      }
     }
-    sNew.toLowerCase();
     sNew.replaceAll("\\s","");
-    return sNew;
-}
+    return sNew.toLowerCase();
+  }
 
 
